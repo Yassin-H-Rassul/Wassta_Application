@@ -28,6 +28,7 @@ environment:
 # versions available, run `flutter pub outdated`.
 dependencies:
   font_awesome_flutter: 9.2.0
+  flutter_slider_drawer: 2.0.0
   material_design_icons_flutter: 5.0.5955-rc.1
   flutter:
     sdk: flutter

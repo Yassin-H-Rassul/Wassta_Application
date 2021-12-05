@@ -121,18 +121,44 @@ class _MyHomePageState extends State<MyHomePage> {
     });
   }
 
+  bool isDrawerOpened = false;
+
+  void drawerHandler() {
+    setState(() {
+      isDrawerOpened = !isDrawerOpened;
+    });
+  }
+
   @override
   Widget build(BuildContext context) {
     return openWorkerProfile
         ? ProfileScreen(workerInfo!, showingProfileHandler)
         : Scaffold(
             extendBodyBehindAppBar: true,
-            drawer: CustomDrawer(yourAccountInfo),
-            appBar: const CustomAppBar(),
+            // drawer: CustomDrawer(yourAccountInfo),
+            appBar: CustomAppBar(drawerHandler),
             body: Builder(
               builder: (BuildContext context) {
                 if (selectedTabIndex == 0) {
-                  return HomeScreen(showingProfileHandler);
+                  return Stack(
+                    clipBehavior: Clip.none,
+                    children: [
+                      Container(
+                        child: CustomDrawer(yourAccountInfo),
+                      ),
+                      AnimatedContainer(
+                        duration: Duration(milliseconds: 1000),
+                        transform: Matrix4.translationValues(
+                            isDrawerOpened
+                                ? MediaQuery.of(context).size.width / 2
+                                : 0,
+                            0,
+                            0),
+                        child: HomeScreen(showingProfileHandler),
+                      ),
+                    ],
+                  );
+                  // return HomeScreen(showingProfileHandler);
                 } else if (selectedTabIndex == 1) {
                   return FavouritesScreen();
                 } else if (selectedTabIndex == 2) {

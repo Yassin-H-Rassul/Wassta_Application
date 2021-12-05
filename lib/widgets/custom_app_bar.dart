@@ -1,7 +1,9 @@
 import 'package:flutter/material.dart';
 
 class CustomAppBar extends StatelessWidget implements PreferredSizeWidget {
-  const CustomAppBar({Key? key}) : super(key: key);
+  Function drawerHandler;
+
+  CustomAppBar(this.drawerHandler);
 
   @override
   // TODO: implement preferredSize
@@ -12,17 +14,22 @@ class CustomAppBar extends StatelessWidget implements PreferredSizeWidget {
     return AppBar(
       centerTitle: true,
       backgroundColor: Theme.of(context).appBarTheme.backgroundColor,
-      leading: Builder(builder: (builderContext) {
-        return IconButton(
-          onPressed: () {
-            Scaffold.of(builderContext).openDrawer();
-          },
-          icon: const Icon(
-            Icons.sort,
-            size: 30,
-          ),
-        );
-      }),
+      leading:
+          // Builder(builder: (builderContext) {
+
+          //   return
+
+          IconButton(
+        onPressed: () {
+          // Scaffold.of(builderContext).openDrawer();
+          drawerHandler();
+        },
+        icon: const Icon(
+          Icons.sort,
+          size: 30,
+        ),
+      ),
+      // }),
       title: const Icon(
         Icons.location_on,
         size: 30,

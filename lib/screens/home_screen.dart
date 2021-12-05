@@ -1,4 +1,5 @@
 import 'package:flutter/material.dart';
+import 'package:flutter_slider_drawer/flutter_slider_drawer.dart';
 
 import 'package:wasstaapp/widgets/list_of_workers.dart';
 import '../widgets/title_row.dart';
@@ -178,6 +179,14 @@ class _HomeScreenState extends State<HomeScreen> {
       ],
     ),
   ];
+
+  var isDrawerOpen = false;
+
+  void drawerHandler() {
+    setState(() {
+      isDrawerOpen = !isDrawerOpen;
+    });
+  }
 
   @override
   Widget build(BuildContext context) {
