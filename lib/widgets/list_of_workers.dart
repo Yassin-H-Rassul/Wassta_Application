@@ -4,19 +4,17 @@ import 'package:wasstaapp/widgets/worker_item.dart';
 
 class ListOfWorkers extends StatelessWidget {
   final List<Worker> informationOfWorkers;
-  final Function showingProfileHandler;
 
-  ListOfWorkers(this.informationOfWorkers, this.showingProfileHandler);
+  const ListOfWorkers(this.informationOfWorkers);
 
   @override
   Widget build(BuildContext context) {
-    return Container(
-      // width: 200,
+    return SizedBox(
       height: 152,
       child: ListView(
         shrinkWrap: true,
         children: informationOfWorkers.map((worker) {
-          return WorkerItem(worker, showingProfileHandler);
+          return WorkerItem(worker);
         }).toList(),
         scrollDirection: Axis.horizontal,
       ),

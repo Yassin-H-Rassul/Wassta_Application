@@ -1,13 +1,5 @@
 import 'package:flutter/material.dart';
-import 'package:wasstaapp/screens/nearby_screen.dart';
-import 'package:wasstaapp/screens/notifications_screen.dart';
-import 'package:wasstaapp/screens/profile_screen.dart';
-import 'package:wasstaapp/widgets/custom_drawer.dart';
-import './screens/favourites_screen.dart';
-import './screens/home_screen.dart';
-import './widgets/custom_app_bar.dart';
-import './widgets/bottom_nav_bar.dart';
-import './Models/worker.dart';
+import 'widgets/bottom_nav_helper.dart';
 
 void main() {
   runApp(const MyApp());
@@ -23,7 +15,7 @@ class MyApp extends StatelessWidget {
       title: 'Wassta Application',
       theme: ThemeData(
         fontFamily: 'NRT',
-        primaryColor: Color(0xff1b4754),
+        primaryColor: const Color(0xff1b4754),
         textTheme: ThemeData.light().textTheme.copyWith(
               subtitle1: const TextStyle(
                 fontSize: 20,
@@ -75,100 +67,7 @@ class MyApp extends StatelessWidget {
           backgroundColor: Color(0xff1b4754),
         ),
       ),
-      home: const MyHomePage(),
+      home: const BottomNavHelper(),
     );
-  }
-}
-
-class MyHomePage extends StatefulWidget {
-  const MyHomePage({Key? key}) : super(key: key);
-  @override
-  State<MyHomePage> createState() => _MyHomePageState();
-}
-
-class _MyHomePageState extends State<MyHomePage> {
-  Worker yourAccountInfo = Worker(
-    name: '  راوێژ موستەفا حاجی',
-    phoneNo: 'ژمارەی مۆبایل: ٠٧٥٠٥٥٥٥٥٥٥',
-    occupation: 'پیشە: جامچی',
-    workerImage: 'assets/images/man.jpg',
-    locationPic: 'assets/images/locationpicture.jpg',
-    albumPics: [
-      'assets/images/1.jpg',
-      'assets/images/2.jpg',
-      'assets/images/3.jpg',
-    ],
-  );
-
-  Worker? workerInfo;
-  late bool openWorkerProfile = false;
-
-  late int selectedTabIndex = 0;
-
-  void navigation(int tabIndex) {
-    setState(() {
-      selectedTabIndex = tabIndex;
-    });
-  }
-
-  void showingProfileHandler(
-      {required bool openWorkerProfile, Worker? workerInfo}) {
-    setState(() {
-      this.openWorkerProfile = openWorkerProfile;
-      if (openWorkerProfile) {
-        this.workerInfo = workerInfo;
-      }
-    });
-  }
-
-  bool isDrawerOpened = false;
-
-  void drawerHandler() {
-    setState(() {
-      isDrawerOpened = !isDrawerOpened;
-    });
-  }
-
-  @override
-  Widget build(BuildContext context) {
-    return openWorkerProfile
-        ? ProfileScreen(workerInfo!, showingProfileHandler)
-        : Scaffold(
-            extendBodyBehindAppBar: true,
-            // drawer: CustomDrawer(yourAccountInfo),
-            appBar: CustomAppBar(drawerHandler),
-            body: Builder(
-              builder: (BuildContext context) {
-                if (selectedTabIndex == 0) {
-                  return Stack(
-                    clipBehavior: Clip.none,
-                    children: [
-                      Container(
-                        child: CustomDrawer(yourAccountInfo),
-                      ),
-                      AnimatedContainer(
-                        duration: Duration(milliseconds: 1000),
-                        transform: Matrix4.translationValues(
-                            isDrawerOpened
-                                ? MediaQuery.of(context).size.width / 2
-                                : 0,
-                            0,
-                            0),
-                        child: HomeScreen(showingProfileHandler),
-                      ),
-                    ],
-                  );
-                  // return HomeScreen(showingProfileHandler);
-                } else if (selectedTabIndex == 1) {
-                  return FavouritesScreen();
-                } else if (selectedTabIndex == 2) {
-                  return NearbyScreen();
-                } else {
-                  return NotificationsScreen();
-                }
-              },
-            ),
-            bottomNavigationBar: BottomNavBar(navigation),
-          );
   }
 }

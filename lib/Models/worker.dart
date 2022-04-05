@@ -1,5 +1,3 @@
-import 'package:flutter/cupertino.dart';
-
 class Worker {
   late String name;
   late String phoneNo;

@@ -26,7 +26,7 @@ class TitleRow extends StatelessWidget {
                 margin: const EdgeInsets.symmetric(horizontal: 8),
                 child: Text(
                   trailingText!,
-                  style: TextStyle(
+                  style: const TextStyle(
                     color: Colors.black54,
                     fontSize: 14,
                     fontWeight: FontWeight.bold,

@@ -1,22 +1,20 @@
 import 'package:flutter/material.dart';
 import 'package:carousel_slider/carousel_slider.dart';
 
+import '../dummy_data.dart';
+
 class CustomSlider extends StatefulWidget {
+  const CustomSlider({Key? key}) : super(key: key);
+
   @override
   _CustomSliderState createState() => _CustomSliderState();
 }
 
 class _CustomSliderState extends State<CustomSlider> {
-  final List<String> _pictures = [
-    'assets/images/1.jpg',
-    'assets/images/2.jpg',
-    'assets/images/3.jpg',
-    'assets/images/4.jpg'
-  ];
   @override
   Widget build(BuildContext context) {
     return CarouselSlider(
-      items: _pictures.map((imagePath) {
+      items: pictures.map((imagePath) {
         return Container(
           margin: const EdgeInsets.symmetric(horizontal: 4),
           height: 50,

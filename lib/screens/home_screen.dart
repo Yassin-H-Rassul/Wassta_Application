@@ -1,193 +1,17 @@
 import 'package:flutter/material.dart';
-import 'package:flutter_slider_drawer/flutter_slider_drawer.dart';
-
 import 'package:wasstaapp/widgets/list_of_workers.dart';
+import '../dummy_data.dart';
 import '../widgets/title_row.dart';
 import '../widgets/custom_slider.dart';
-import '../Models/worker.dart';
 
 class HomeScreen extends StatefulWidget {
-  final Function showingProfileHandler;
+  const HomeScreen({Key? key}) : super(key: key);
 
-  HomeScreen(this.showingProfileHandler);
   @override
   _HomeScreenState createState() => _HomeScreenState();
 }
 
 class _HomeScreenState extends State<HomeScreen> {
-  final List<Worker> informationOfBestOfMonthWorkers = [
-    Worker(
-      name: 'سەروەر دلێر ڕەشید',
-      phoneNo: 'ژمارەی مۆبایل: ٠٧٥٠٦٦٦٦٦٦٦',
-      occupation: 'پیشە: وێنەگر',
-      workerImage: 'assets/images/man5.jpeg',
-      locationPic: 'assets/images/locationpicture.jpg',
-      albumPics: [
-        'assets/images/1.jpg',
-        'assets/images/2.jpg',
-        'assets/images/3.jpg',
-        'assets/images/4.jpg',
-      ],
-    ),
-    Worker(
-      name: '  راوێژ موستەفا حاجی',
-      phoneNo: 'ژمارەی مۆبایل: ٠٧٥٠٥٥٥٥٥٥٥',
-      occupation: 'پیشە: جامچی',
-      workerImage: 'assets/images/man.jpg',
-      locationPic: 'assets/images/locationpicture.jpg',
-      albumPics: [
-        'assets/images/1.jpg',
-        'assets/images/2.jpg',
-        'assets/images/3.jpg',
-        'assets/images/4.jpg',
-      ],
-    ),
-    Worker(
-      name: '  راوێژ موستەفا حاجی',
-      phoneNo: 'ژمارەی مۆبایل: ٠٧٥٠٥٥٥٥٥٥٥',
-      occupation: 'پیشە: جامچی',
-      workerImage: 'assets/images/man.jpg',
-      locationPic: 'assets/images/locationpicture.jpg',
-      albumPics: [
-        'assets/images/1.jpg',
-        'assets/images/2.jpg',
-        'assets/images/3.jpg',
-        'assets/images/4.jpg',
-      ],
-    ),
-    Worker(
-      name: '  راوێژ موستەفا حاجی',
-      phoneNo: 'ژمارەی مۆبایل: ٠٧٥٠٥٥٥٥٥٥٥',
-      occupation: 'پیشە: جامچی',
-      workerImage: 'assets/images/man.jpg',
-      locationPic: 'assets/images/locationpicture.jpg',
-      albumPics: [
-        'assets/images/1.jpg',
-        'assets/images/2.jpg',
-        'assets/images/3.jpg',
-        'assets/images/4.jpg',
-      ],
-    ),
-  ];
-
-  final List<Worker> informationOfLatestWorkers = [
-    Worker(
-      name: '  راوێژ موستەفا حاجی',
-      phoneNo: 'ژمارەی مۆبایل: ٠٧٥٠٥٥٥٥٥٥٥',
-      occupation: 'پیشە: جامچی',
-      workerImage: 'assets/images/man.jpg',
-      locationPic: 'assets/images/locationpicture.jpg',
-      albumPics: [
-        'assets/images/1.jpg',
-        'assets/images/2.jpg',
-        'assets/images/3.jpg',
-        'assets/images/4.jpg',
-      ],
-    ),
-    Worker(
-      name: '  راوێژ موستەفا حاجی',
-      phoneNo: 'ژمارەی مۆبایل: ٠٧٥٠٥٥٥٥٥٥٥',
-      occupation: 'پیشە: جامچی',
-      workerImage: 'assets/images/man.jpg',
-      locationPic: 'assets/images/locationpicture.jpg',
-      albumPics: [
-        'assets/images/1.jpg',
-        'assets/images/2.jpg',
-        'assets/images/3.jpg',
-        'assets/images/4.jpg',
-      ],
-    ),
-    Worker(
-      name: '  راوێژ موستەفا حاجی',
-      phoneNo: 'ژمارەی مۆبایل: ٠٧٥٠٥٥٥٥٥٥٥',
-      occupation: 'پیشە: جامچی',
-      workerImage: 'assets/images/man.jpg',
-      locationPic: 'assets/images/locationpicture.jpg',
-      albumPics: [
-        'assets/images/1.jpg',
-        'assets/images/2.jpg',
-        'assets/images/3.jpg',
-        'assets/images/4.jpg',
-      ],
-    ),
-    Worker(
-      name: '  راوێژ موستەفا حاجی',
-      phoneNo: 'ژمارەی مۆبایل: ٠٧٥٠٥٥٥٥٥٥٥',
-      occupation: 'پیشە: جامچی',
-      workerImage: 'assets/images/man.jpg',
-      locationPic: 'assets/images/locationpicture.jpg',
-      albumPics: [
-        'assets/images/1.jpg',
-        'assets/images/2.jpg',
-        'assets/images/3.jpg',
-        'assets/images/4.jpg',
-      ],
-    ),
-  ];
-
-  final List<Worker> informationOfFeaturedWorkers = [
-    Worker(
-      name: '  راوێژ موستەفا حاجی',
-      phoneNo: 'ژمارەی مۆبایل: ٠٧٥٠٥٥٥٥٥٥٥',
-      occupation: 'پیشە: جامچی',
-      workerImage: 'assets/images/man.jpg',
-      locationPic: 'assets/images/locationpicture.jpg',
-      albumPics: [
-        'assets/images/1.jpg',
-        'assets/images/2.jpg',
-        'assets/images/3.jpg',
-        'assets/images/4.jpg',
-      ],
-    ),
-    Worker(
-      name: '  راوێژ موستەفا حاجی',
-      phoneNo: 'ژمارەی مۆبایل: ٠٧٥٠٥٥٥٥٥٥٥',
-      occupation: 'پیشە: جامچی',
-      workerImage: 'assets/images/man.jpg',
-      locationPic: 'assets/images/locationpicture.jpg',
-      albumPics: [
-        'assets/images/1.jpg',
-        'assets/images/2.jpg',
-        'assets/images/3.jpg',
-        'assets/images/4.jpg',
-      ],
-    ),
-    Worker(
-      name: '  راوێژ موستەفا حاجی',
-      phoneNo: 'ژمارەی مۆبایل: ٠٧٥٠٥٥٥٥٥٥٥',
-      occupation: 'پیشە: جامچی',
-      workerImage: 'assets/images/man.jpg',
-      locationPic: 'assets/images/locationpicture.jpg',
-      albumPics: [
-        'assets/images/1.jpg',
-        'assets/images/2.jpg',
-        'assets/images/3.jpg',
-        'assets/images/4.jpg',
-      ],
-    ),
-    Worker(
-      name: '  راوێژ موستەفا حاجی',
-      phoneNo: 'ژمارەی مۆبایل: ٠٧٥٠٥٥٥٥٥٥٥',
-      occupation: 'پیشە: جامچی',
-      workerImage: 'assets/images/man.jpg',
-      locationPic: 'assets/images/locationpicture.jpg',
-      albumPics: [
-        'assets/images/1.jpg',
-        'assets/images/2.jpg',
-        'assets/images/3.jpg',
-        'assets/images/4.jpg',
-      ],
-    ),
-  ];
-
-  var isDrawerOpen = false;
-
-  void drawerHandler() {
-    setState(() {
-      isDrawerOpen = !isDrawerOpen;
-    });
-  }
-
   @override
   Widget build(BuildContext context) {
     return Scaffold(
@@ -195,15 +19,19 @@ class _HomeScreenState extends State<HomeScreen> {
         child: Column(
           children: [
             const SizedBox(
-              height: 67,
+              height: 73,
             ),
-            CustomSlider(),
+            const CustomSlider(),
+            const SizedBox(
+              height: 20,
+            ),
             const TitleRow(
               title: 'Best Of Month',
               trailingText: 'More',
             ),
             ListOfWorkers(
-                informationOfBestOfMonthWorkers, widget.showingProfileHandler),
+              informationOfBestOfMonthWorkers,
+            ),
             const Divider(
               thickness: 1,
               height: 30,
@@ -213,7 +41,8 @@ class _HomeScreenState extends State<HomeScreen> {
               trailingText: 'More',
             ),
             ListOfWorkers(
-                informationOfLatestWorkers, widget.showingProfileHandler),
+              informationOfLatestWorkers,
+            ),
             const Divider(
               thickness: 1,
               height: 30,
@@ -223,7 +52,8 @@ class _HomeScreenState extends State<HomeScreen> {
               trailingText: 'More',
             ),
             ListOfWorkers(
-                informationOfFeaturedWorkers, widget.showingProfileHandler),
+              informationOfFeaturedWorkers,
+            ),
             const Divider(
               thickness: 1,
               height: 30,

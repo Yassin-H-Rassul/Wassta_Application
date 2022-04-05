@@ -1,9 +1,9 @@
 import 'package:flutter/material.dart';
 
 class BottomNavBar extends StatefulWidget {
-  late final Function navigationHandler;
+  final Function navigationHandler;
 
-  BottomNavBar(this.navigationHandler);
+  const BottomNavBar(this.navigationHandler);
   @override
   State<BottomNavBar> createState() => _BottomNavBarState();
 }
@@ -48,7 +48,7 @@ class _BottomNavBarState extends State<BottomNavBar> {
           widget.navigationHandler(selectedTab);
         });
       },
-      child: Container(
+      child: SizedBox(
         width: 90,
         height: double.maxFinite,
         child: SizedBox(

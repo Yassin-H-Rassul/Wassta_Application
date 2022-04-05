@@ -1,21 +1,22 @@
 import 'package:flutter/material.dart';
+import 'package:wasstaapp/screens/profile_screen.dart';
 import '../Models/worker.dart';
 
 class WorkerItem extends StatelessWidget {
   final Worker workerInfo;
-  final Function showingProfileHandler;
-  WorkerItem(this.workerInfo, this.showingProfileHandler);
 
-  bool? openWorkerProfile = false;
+  const WorkerItem(this.workerInfo);
 
   @override
   Widget build(BuildContext context) {
-    // container => column/Cliprrect => both are containers
     return GestureDetector(
       onTap: () {
-        openWorkerProfile = true;
-        showingProfileHandler(
-            openWorkerProfile: openWorkerProfile, workerInfo: workerInfo);
+        Navigator.push(
+          context,
+          MaterialPageRoute(
+            builder: (context) => ProfileScreen(workerInfo),
+          ),
+        );
       },
       child: Padding(
         padding: const EdgeInsets.symmetric(horizontal: 5),
@@ -28,25 +29,23 @@ class WorkerItem extends StatelessWidget {
           height: 140,
           child: Column(
             children: [
-              Container(
+              SizedBox(
                 width: 140,
                 height: 75,
                 child: ClipRRect(
-                  borderRadius:
-                      const BorderRadius.vertical(top: Radius.circular(20)),
-                  child: Container(
-                    color: Colors.black,
-                    child: Image.asset(
-                      workerInfo.workerImage,
-                      fit: BoxFit.cover,
-                    ),
+                  borderRadius: const BorderRadius.vertical(
+                    top: Radius.circular(20),
+                  ),
+                  child: Image.asset(
+                    workerInfo.workerImage,
+                    fit: BoxFit.cover,
                   ),
                 ),
               ),
               const SizedBox(
                 height: 5,
               ),
-              Container(
+              SizedBox(
                 width: 140,
                 height: 70,
                 child: Column(
